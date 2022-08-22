@@ -1,0 +1,29 @@
+# FROM Instruction
+docker build -t ndevtechnology/learndocker learndocker
+
+docker image ls
+
+# RUN Instruction
+docker build -t ndevtechnology/learndocker learndocker
+
+docker build -t ndevtechnology/learndocker learndocker --progress=plain --no-cache
+
+# CMD Instruction
+docker build -t khannedy/command command
+
+docker image inspect khannedy/command
+
+docker container create --name command khannedy/command
+
+docker container start command
+
+docker container logs command
+
+
+## Spring Docker Compose
+docker-compose -f docker-compose.yml up -d
+
+./gradlew clean 
+./gradlew build
+
+docker build --tag kotlin-restful-api:0.0.1 .

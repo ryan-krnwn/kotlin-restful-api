@@ -1,0 +1,83 @@
+# Print Working Directory
+pwd
+
+# Check Version
+docker version
+
+# List Docker Image
+docker image ls
+
+# Add Docker Image
+docker image pull centos:latest
+
+# Remove Docker Image
+docker rm centos:latest
+
+# List Docker Container Show All
+docker container ls -a
+
+# List Docker Container Running
+docker container ls
+
+# Create Docker Container
+docker container create --name testcentos centos:latest
+
+# Remove Docker Container
+docker container rm testcentos
+
+# Start Docker Container
+docker container start testcentos
+
+# Stop Docker Container
+docker container stop testcentos
+
+# Show Log Docker Container
+docker container logs testcentos
+
+# Show Log Realtime Docker Container
+docker container logs -f testcentos
+
+# Docker Container Exec (Open Terminal on Container)
+docker container exec -i -t testcentos /bin/bash
+
+# Create Docker Container Port Forwarding
+docker image pull nginx:latest
+docker container start testnginx
+docker container create --name testnginx --publish 8080:80 nginx:latest
+
+# Create Docker Container Environment Variable
+docker image pull mongo:latest
+docker container create --name contohmongo --publish 27017:27017 --env MONGO_INITDB_ROOT_USERNAME=eko --env MONGO_INITDB_ROOT_PASSWORD=eko mongo:latest
+
+# Docker Container Stats
+docker container stats
+
+# Docker Container Resources Limit
+docker container create --name smallnginx --memory 100m --cpus 0.5 --publish 8081:80 nginx:latest
+
+# Docker Bind Mounts
+docker container create --name mongodata --publish 27018:27017 --mount "type=bind,source=/Users/khannedy/Developments/YOUTUBE/belajar-docker-dasar/mongo-data,destination=/data/db" --env MONGO_INITDB_ROOT_USERNAME=eko --env MONGO_INITDB_ROOT_PASSWORD=eko mongo:latest
+
+# Docker List Volume
+docker volume ls
+
+# Docker Create Volume
+docker volume create testvolume
+
+# Docker Delete Volume
+docker volume rm testvolume
+
+# Docker Create Container Volume Mounts
+docker container create --name mongovolume --publish 27019:27017 --mount "type=volume,source=mongodata,destination=/data/db" --env MONGO_INITDB_ROOT_USERNAME=eko --env MONGO_INITDB_ROOT_PASSWORD=eko mongo:latest
+
+# Docker List Network
+docker network ls
+
+# Docker Inspect
+docker container inspect testcentos
+
+# Docker Prune (Remove Unused Container or other)
+docker container prune
+docker volume prune
+docker network prune
+docker system prune
