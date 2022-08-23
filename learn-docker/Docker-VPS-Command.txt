@@ -1,0 +1,39 @@
+# Print Working Directory
+pwd
+
+# Create Docker Compose
+nano docker-compose.yml
+
+// Start
+version: '3.5'
+
+services:
+  kotlin-restful-api:
+    container_name: kotlin-restful-api
+    image: ryankrnwn/kotlin-restful-api:0.0.1
+    ports:
+      - "80:8080"
+    environment:
+      DATABASE_USERNAME: kotlin
+      DATABASE_PASSWORD: kotlin
+      DATABASE_URL: jdbc:postgresql://kotlin-restful-api-postgres:5432/restful-api
+
+  kotlin-restful-api-postgres:
+    container_name: "kotlin-restful-api-postgres"
+    image: postgres:12-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: kotlin
+      POSTGRES_USER: kotlin
+      POSTGRES_DB: restful-api
+// End
+
+# Pull Image from Docker Hub
+docker image pull ryankrnwn/kotlin-restful-api:0.0.1
+
+# Run Docker Compose (Create Run Container)
+docker-compose -f docker-compose.yml up -d
+
+# Show Logs Docker
+docker logs kotlin-restful-api

@@ -81,3 +81,13 @@ docker container prune
 docker volume prune
 docker network prune
 docker system prune
+
+# Push Docker Image to Docker Hub
+# Login to Docker Hub
+docker login -u ryankrnwn
+
+# Tag the docker image
+docker tag kotlin-restful-api:0.0.1 ryankrnwn/kotlin-restful-api:0.0.1
+
+# Push Docker Image
+docker push ryankrnwn/kotlin-restful-api:0.0.1
